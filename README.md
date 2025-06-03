@@ -1,95 +1,95 @@
-# CRM アプリ
+# CRM App
 
-## 概要
-HTML/CSS/JSで構成されたシンプルなCRM（Customer Relationship Management）Webアプリ。
-ローカルの data.txt に顧客情報のCRUD操作。
+## Overview
+A simple CRM (Customer Relationship Management) web application built with HTML/CSS/JS.
+Performs CRUD operations on customer information stored in local data.txt.
 
-## ファイル構成
-- **index.html** : メインのHTMLファイル
-- **styles.css** : スタイルシート
-- **app.js** : JavaScript ロジック
-- **data.txt** : 顧客データファイル
+## File Structure
+- **index.html** : Main HTML file
+- **styles.css** : Stylesheet
+- **app.js** : JavaScript logic
+- **data.txt** : Customer data file
 
-## 使用方法
-`index.html` をブラウザで開くだけ。
+## Usage
+Simply open `index.html` in your browser.
 
-## 機能
+## Features
 
-### 基本機能
-- ✅ 顧客情報の追加・編集・削除
-- ✅ 顧客一覧表示
-- ✅ 検索機能（顧客名、会社名、メールアドレス）
-- ✅ ステータスフィルター
-- ✅ レスポンシブデザイン
-- ✅ ライト/ダークモード切り替え
+### Core Features
+- ✅ Add, edit, and delete customer information
+- ✅ Customer list display
+- ✅ Search functionality (customer name, company name, email address)
+- ✅ Status filtering
+- ✅ Responsive design
+- ✅ Light/Dark mode toggle
 
-### 顧客情報項目
-- 顧客名（必須）
-- 会社名
-- メールアドレス
-- 電話番号
-- ステータス（新規/見込み客/既存顧客/休眠顧客）
-- 担当者
-- 備考
-- 作成日
+### Customer Information Fields
+- Customer name (required)
+- Company name
+- Email address
+- Phone number
+- Status (New/Prospect/Existing Customer/Dormant Customer)
+- Representative
+- Notes
+- Created date
 
-### データ形式
-顧客データは `data.txt` に以下の形式で保存されます：
+### Data Format
+Customer data is saved in `data.txt` in the following format:
 ```
-顧客名|会社名|メールアドレス|電話番号|ステータス|担当者|備考|作成日
+Customer Name|Company Name|Email Address|Phone Number|Status|Representative|Notes|Created Date
 ```
 
-### キーボードショートカット
-- `Ctrl/Cmd + N` : 新規顧客登録フォームにフォーカス
-- `Escape` : 編集キャンセル / モーダル閉じる
+### Keyboard Shortcuts
+- `Ctrl/Cmd + N` : Focus on new customer registration form
+- `Escape` : Cancel edit / Close modal
 
-### テーマ
-- ライトモード（デフォルト）
-- ダークモード
-- 設定はブラウザに自動保存
+### Themes
+- Light mode (default)
+- Dark mode
+- Settings are automatically saved in browser
 
-## 技術仕様
-- **フロントエンド**: HTML5, CSS3, Vanilla JavaScript
-- **データ保存**: localStorage（data.txt形式をエミュレート）
-- **アイコン**: Font Awesome 6.0
-- **レスポンシブ**: モバイルファーストデザイン
+## Technical Specifications
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Data Storage**: localStorage (emulates data.txt format)
+- **Icons**: Font Awesome 6.0
+- **Responsive**: Mobile-first design
 
-## ブラウザ対応
+## Browser Support
 - Chrome 90+
 - Firefox 88+
 - Safari 14+
 - Edge 90+
 
-## 開発者向け情報
+## Developer Information
 
-### クラス構造
-- `CRMApp` : メインアプリケーションクラス
-  - データ管理
-  - イベントハンドリング
-  - UI レンダリング
-  - テーマ管理
+### Class Structure
+- `CRMApp` : Main application class
+  - Data management
+  - Event handling
+  - UI rendering
+  - Theme management
 
-### データフロー
-1. localStorage から data.txt 形式のデータを読み込み
-2. パイプ区切り（|）でパース
-3. JavaScript オブジェクトとして管理
-4. 変更時に localStorage に保存
+### Data Flow
+1. Load data.txt format data from localStorage
+2. Parse with pipe delimiter (|)
+3. Manage as JavaScript objects
+4. Save to localStorage when changed
 
-### カスタマイズ
-CSS変数を使用しているため、テーマのカスタマイズが容易です：
+### Customization
+Easy theme customization using CSS variables:
 ```css
 :root {
     --primary-color: #2563eb;
     --bg-primary: #ffffff;
-    /* その他の変数... */
+    /* Other variables... */
 }
 ```
 
-## ライセンス
+## License
 MIT License
 
-## 更新履歴
-- v1.0.0 (2025-01-15) : 初回リリース
-  - 基本的なCRUD機能
-  - レスポンシブデザイン
-  - ライト/ダークモード
+## Release History
+- v1.0.0 (2025-01-15) : Initial release
+  - Basic CRUD functionality
+  - Responsive design
+  - Light/Dark mode
