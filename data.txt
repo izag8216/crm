@@ -4,3 +4,13 @@ Jiro Sato|Demo Corporation|sato@demo.jp|052-1111-2222|New|Tanaka Sales|Initial c
 Ichiro Suzuki|ABC Corporation|suzuki@abc.co.jp|03-9999-8888|Existing Customer|Sato Sales|Monthly regular meetings ongoing|2025-01-04
 Misaki Takahashi|XYZ Trading|takahashi@xyz.com|06-7777-6666|Prospect|Suzuki Sales|Proposal in progress|2025-01-05
 Kenta Ito|Sample Industry|ito@sample-industry.jp|052-5555-4444|Dormant Customer|Tanaka Sales|No contact for six months|2024-12-15
+Sarah Johnson|TechFlow Solutions|sarah.johnson@techflow.com|555-0123|New|Davis Sales|Initial inquiry about software solutions|2025-01-06
+Michael Chen|Global Enterprises|m.chen@globalent.com|555-0456|Prospect|Rodriguez Sales|Interested in enterprise package|2025-01-07
+Emma Williams|Digital Innovations|emma@diginnovations.net|555-0789|Existing Customer|Davis Sales|Quarterly check-in scheduled|2025-01-08
+David Brown|SmartTech Industries|david.brown@smarttech.io|555-0321|Prospect|Miller Sales|Demo completed, awaiting decision|2025-01-09
+Lisa Garcia|FutureCorp|lisa.garcia@futurecorp.com|555-0654|New|Rodriguez Sales|First meeting scheduled next week|2025-01-10
+James Thompson|Innovation Labs|j.thompson@innovlabs.org|555-0987|Existing Customer|Miller Sales|Contract renewal discussion ongoing|2025-01-11
+Rachel Adams|NextGen Systems|r.adams@nextgensys.com|555-0234|Dormant Customer|Davis Sales|Lost contact three months ago|2024-11-05
+Kevin O'Brien|Progressive Solutions|kevin@progressivesol.com|555-0567|Prospect|Rodriguez Sales|Proposal submitted, follow-up needed|2025-01-12
+Maria Rodriguez|Advanced Technologies|maria@advancedtech.biz|555-0890|New|Miller Sales|Referral from existing customer|2025-01-13
+Anthony Lee|Strategic Consulting|anthony.lee@stratcons.com|555-0345|Existing Customer|Davis Sales|Long-term partnership, regular meetings|2025-01-14
