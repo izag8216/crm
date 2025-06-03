@@ -30,7 +30,7 @@ class CRMApp {
                         companyName: parts[1] || '',
                         email: parts[2] || '',
                         phone: parts[3] || '',
-                        status: parts[4] || '新規',
+                        status: parts[4] || 'New',
                         assignee: parts[5] || '',
                         notes: parts[6] || '',
                         createdAt: parts[7] || new Date().toISOString().split('T')[0]
@@ -68,35 +68,35 @@ class CRMApp {
         this.customers = [
             {
                 id: 1,
-                customerName: '田中太郎',
-                companyName: '株式会社サンプル',
+                customerName: 'Taro Tanaka',
+                companyName: 'Sample Corporation',
                 email: 'tanaka@sample.co.jp',
                 phone: '03-1234-5678',
-                status: '既存顧客',
-                assignee: '佐藤営業',
-                notes: '定期的なフォローアップが必要',
+                status: 'Existing Customer',
+                assignee: 'Sato Sales',
+                notes: 'Regular follow-up required',
                 createdAt: '2025-01-01'
             },
             {
                 id: 2,
-                customerName: '山田花子',
-                companyName: 'テスト商事',
+                customerName: 'Hanako Yamada',
+                companyName: 'Test Trading Company',
                 email: 'yamada@test.com',
                 phone: '06-9876-5432',
-                status: '見込み客',
-                assignee: '鈴木営業',
-                notes: '来月プレゼン予定',
+                status: 'Prospect',
+                assignee: 'Suzuki Sales',
+                notes: 'Presentation scheduled for next month',
                 createdAt: '2025-01-02'
             },
             {
                 id: 3,
-                customerName: '佐藤次郎',
-                companyName: 'デモ株式会社',
+                customerName: 'Jiro Sato',
+                companyName: 'Demo Corporation',
                 email: 'sato@demo.jp',
                 phone: '052-1111-2222',
-                status: '新規',
-                assignee: '田中営業',
-                notes: '初回コンタクト完了',
+                status: 'New',
+                assignee: 'Tanaka Sales',
+                notes: 'Initial contact completed',
                 createdAt: '2025-01-03'
             }
         ];
@@ -184,7 +184,7 @@ class CRMApp {
         this.saveCustomers();
         this.renderCustomers();
         this.resetForm();
-        this.showNotification('顧客情報を追加しました', 'success');
+        this.showNotification('Customer information added', 'success');
     }
 
     updateCustomer(id, customerData) {
@@ -197,7 +197,7 @@ class CRMApp {
             this.saveCustomers();
             this.renderCustomers();
             this.resetForm();
-            this.showNotification('顧客情報を更新しました', 'success');
+            this.showNotification('Customer information updated', 'success');
         }
     }
 
@@ -208,7 +208,7 @@ class CRMApp {
             this.populateForm(customer);
             document.getElementById('cancelEdit').style.display = 'inline-flex';
             document.querySelector('.form-section .section-title').innerHTML = 
-                '<i class="fas fa-user-edit"></i>顧客情報編集';
+                '<i class="fas fa-user-edit"></i>Edit Customer Information';
             
             // Scroll to form
             document.querySelector('.form-section').scrollIntoView({ 
@@ -228,7 +228,7 @@ class CRMApp {
             this.saveCustomers();
             this.renderCustomers();
             this.closeModals();
-            this.showNotification('顧客情報を削除しました', 'success');
+            this.showNotification('Customer information deleted', 'success');
             this.customerToDelete = null;
         }
     }
@@ -248,7 +248,7 @@ class CRMApp {
         this.editingCustomerId = null;
         document.getElementById('cancelEdit').style.display = 'none';
         document.querySelector('.form-section .section-title').innerHTML = 
-            '<i class="fas fa-user-plus"></i>顧客情報登録';
+            '<i class="fas fa-user-plus"></i>Register Customer Information';
     }
 
     cancelEdit() {
@@ -264,8 +264,8 @@ class CRMApp {
             customerList.innerHTML = `
                 <div class="empty-state">
                     <i class="fas fa-users"></i>
-                    <h3>顧客情報がありません</h3>
-                    <p>新しい顧客情報を追加してください</p>
+                    <h3>No customer information</h3>
+                    <p>Please add new customer information</p>
                 </div>
             `;
             return;
@@ -316,7 +316,7 @@ class CRMApp {
                 </div>
                 ${customer.notes ? `
                     <div class="customer-notes">
-                        <strong>備考:</strong> ${this.escapeHtml(customer.notes)}
+                        <strong>Notes:</strong> ${this.escapeHtml(customer.notes)}
                     </div>
                 ` : ''}
             </div>
@@ -412,7 +412,7 @@ class CRMApp {
         link.click();
         
         URL.revokeObjectURL(url);
-        this.showNotification('データをエクスポートしました', 'success');
+        this.showNotification('Data exported', 'success');
     }
 
     importData(event) {
@@ -423,7 +423,7 @@ class CRMApp {
                 localStorage.setItem('crm_data', e.target.result);
                 this.loadCustomers();
                 this.renderCustomers();
-                this.showNotification('データをインポートしました', 'success');
+                this.showNotification('Data imported', 'success');
             };
             reader.readAsText(file);
         }
