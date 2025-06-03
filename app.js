@@ -8,15 +8,15 @@ class CRMApp {
         this.init();
     }
 
-    init() {
-        this.loadCustomers();
+    async init() {
+        await this.loadCustomers();
         this.setupEventListeners();
         this.applyTheme();
         this.renderCustomers();
     }
 
     // Data Management
-    loadCustomers() {
+    async loadCustomers() {
         const data = localStorage.getItem('crm_data');
         if (data) {
             try {
@@ -42,7 +42,7 @@ class CRMApp {
             }
         } else {
             // Load sample data if no data exists
-            this.loadSampleData();
+            await this.loadSampleData();
         }
     }
 
@@ -64,42 +64,107 @@ class CRMApp {
         localStorage.setItem('crm_data', dataLines.join('\n'));
     }
 
-    loadSampleData() {
-        this.customers = [
-            {
-                id: 1,
-                customerName: 'Taro Tanaka',
-                companyName: 'Sample Corporation',
-                email: 'tanaka@sample.co.jp',
-                phone: '03-1234-5678',
-                status: 'Existing Customer',
-                assignee: 'Sato Sales',
-                notes: 'Regular follow-up required',
-                createdAt: '2025-01-01'
-            },
-            {
-                id: 2,
-                customerName: 'Hanako Yamada',
-                companyName: 'Test Trading Company',
-                email: 'yamada@test.com',
-                phone: '06-9876-5432',
-                status: 'Prospect',
-                assignee: 'Suzuki Sales',
-                notes: 'Presentation scheduled for next month',
-                createdAt: '2025-01-02'
-            },
-            {
-                id: 3,
-                customerName: 'Jiro Sato',
-                companyName: 'Demo Corporation',
-                email: 'sato@demo.jp',
-                phone: '052-1111-2222',
-                status: 'New',
-                assignee: 'Tanaka Sales',
-                notes: 'Initial contact completed',
-                createdAt: '2025-01-03'
+    async loadSampleData() {
+        try {
+            // Load data from data.txt file
+            const response = await fetch('data.txt');
+            const dataText = await response.text();
+            
+            if (dataText.trim()) {
+                // Parse data.txt format and take first 6 entries
+                const lines = dataText.split('\n').filter(line => line.trim()).slice(0, 6);
+                this.customers = lines.map((line, index) => {
+                    const parts = line.split('|');
+                    return {
+                        id: index + 1,
+                        customerName: parts[0] || '',
+                        companyName: parts[1] || '',
+                        email: parts[2] || '',
+                        phone: parts[3] || '',
+                        status: parts[4] || 'New',
+                        assignee: parts[5] || '',
+                        notes: parts[6] || '',
+                        createdAt: parts[7] || new Date().toISOString().split('T')[0]
+                    };
+                });
+            } else {
+                // Fallback to hardcoded data if data.txt is empty
+                this.customers = [
+                    {
+                        id: 1,
+                        customerName: 'Taro Tanaka',
+                        companyName: 'Sample Corporation',
+                        email: 'tanaka@sample.co.jp',
+                        phone: '03-1234-5678',
+                        status: 'Existing Customer',
+                        assignee: 'Sato Sales',
+                        notes: 'Regular follow-up required',
+                        createdAt: '2025-01-01'
+                    },
+                    {
+                        id: 2,
+                        customerName: 'Hanako Yamada',
+                        companyName: 'Test Trading Company',
+                        email: 'yamada@test.com',
+                        phone: '06-9876-5432',
+                        status: 'Prospect',
+                        assignee: 'Suzuki Sales',
+                        notes: 'Presentation scheduled for next month',
+                        createdAt: '2025-01-02'
+                    },
+                    {
+                        id: 3,
+                        customerName: 'Jiro Sato',
+                        companyName: 'Demo Corporation',
+                        email: 'sato@demo.jp',
+                        phone: '052-1111-2222',
+                        status: 'New',
+                        assignee: 'Tanaka Sales',
+                        notes: 'Initial contact completed',
+                        createdAt: '2025-01-03'
+                    }
+                ];
             }
-        ];
+        } catch (error) {
+            console.error('Error loading data.txt, using fallback data:', error);
+            // Fallback to hardcoded data if file loading fails
+            this.customers = [
+                {
+                    id: 1,
+                    customerName: 'Taro Tanaka',
+                    companyName: 'Sample Corporation',
+                    email: 'tanaka@sample.co.jp',
+                    phone: '03-1234-5678',
+                    status: 'Existing Customer',
+                    assignee: 'Sato Sales',
+                    notes: 'Regular follow-up required',
+                    createdAt: '2025-01-01'
+                },
+                {
+                    id: 2,
+                    customerName: 'Hanako Yamada',
+                    companyName: 'Test Trading Company',
+                    email: 'yamada@test.com',
+                    phone: '06-9876-5432',
+                    status: 'Prospect',
+                    assignee: 'Suzuki Sales',
+                    notes: 'Presentation scheduled for next month',
+                    createdAt: '2025-01-02'
+                },
+                {
+                    id: 3,
+                    customerName: 'Jiro Sato',
+                    companyName: 'Demo Corporation',
+                    email: 'sato@demo.jp',
+                    phone: '052-1111-2222',
+                    status: 'New',
+                    assignee: 'Tanaka Sales',
+                    notes: 'Initial contact completed',
+                    createdAt: '2025-01-03'
+                }
+            ];
+        }
+        
         this.saveCustomers();
     }
 
@@ -468,7 +533,7 @@ document.head.appendChild(style);
 
 // Initialize the CRM application
 let crmApp;
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     crmApp = new CRMApp();
 });
 
