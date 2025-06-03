@@ -410,15 +410,15 @@ body {
     letter-spacing: 0.025em;
 }
 
-.status-新規 { background-color: #dbeafe; color: #1e40af; }
-.status-見込み客 { background-color: #fef3c7; color: #92400e; }
-.status-既存顧客 { background-color: #d1fae5; color: #065f46; }
-.status-休眠顧客 { background-color: #fee2e2; color: #991b1b; }
+.status-new { background-color: #dbeafe; color: #1e40af; }
+.status-prospect { background-color: #fef3c7; color: #92400e; }
+.status-existing { background-color: #d1fae5; color: #065f46; }
+.status-inactive { background-color: #fee2e2; color: #991b1b; }
 
-[data-theme="dark"] .status-新規 { background-color: #1e3a8a; color: #93c5fd; }
-[data-theme="dark"] .status-見込み客 { background-color: #92400e; color: #fcd34d; }
-[data-theme="dark"] .status-既存顧客 { background-color: #065f46; color: #6ee7b7; }
-[data-theme="dark"] .status-休眠顧客 { background-color: #991b1b; color: #fca5a5; }
+[data-theme="dark"] .status-new { background-color: #1e3a8a; color: #93c5fd; }
+[data-theme="dark"] .status-prospect { background-color: #92400e; color: #fcd34d; }
+[data-theme="dark"] .status-existing { background-color: #065f46; color: #6ee7b7; }
+[data-theme="dark"] .status-inactive { background-color: #991b1b; color: #fca5a5; }
 
 /* Modal Styles */
 .modal {
