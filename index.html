@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM - Customer Relationship Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <i class="fas fa-users"></i>
+                    CRM System
+                </h1>
+                <div class="header-controls">
+                    <button id="themeToggle" class="theme-toggle" aria-label="テーマ切り替え">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Customer Form -->
+            <section class="form-section">
+                <div class="form-container">
+                    <h2 class="section-title">
+                        <i class="fas fa-user-plus"></i>
+                        顧客情報登録
+                    </h2>
+                    <form id="customerForm" class="customer-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="customerName">顧客名 *</label>
+                                <input type="text" id="customerName" name="customerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="companyName">会社名</label>
+                                <input type="text" id="companyName" name="companyName">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">メールアドレス</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">電話番号</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="status">ステータス</label>
+                                <select id="status" name="status">
+                                    <option value="新規">新規</option>
+                                    <option value="見込み客">見込み客</option>
+                                    <option value="既存顧客">既存顧客</option>
+                                    <option value="休眠顧客">休眠顧客</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignee">担当者</label>
+                                <input type="text" id="assignee" name="assignee">
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="notes">備考</label>
+                            <textarea id="notes" name="notes" rows="3"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                保存
+                            </button>
+                            <button type="button" id="cancelEdit" class="btn btn-secondary" style="display: none;">
+                                <i class="fas fa-times"></i>
+                                キャンセル
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Customer List -->
+            <section class="list-section">
+                <div class="list-container">
+                    <div class="list-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-list"></i>
+                            顧客一覧
+                        </h2>
+                        <div class="list-controls">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="searchInput" placeholder="顧客名、会社名で検索...">
+                            </div>
+                            <select id="statusFilter" class="filter-select">
+                                <option value="">全てのステータス</option>
+                                <option value="新規">新規</option>
+                                <option value="見込み客">見込み客</option>
+                                <option value="既存顧客">既存顧客</option>
+                                <option value="休眠顧客">休眠顧客</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="customerList" class="customer-list">
+                        <!-- Customer cards will be dynamically generated here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 CRM System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>顧客情報編集</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Form content will be copied here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>削除確認</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>この顧客情報を削除してもよろしいですか？</p>
+                <div class="modal-actions">
+                    <button id="confirmDelete" class="btn btn-danger">削除</button>
+                    <button class="btn btn-secondary modal-close">キャンセル</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
